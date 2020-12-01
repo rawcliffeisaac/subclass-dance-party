@@ -1,22 +1,24 @@
-var MakeBlinkyDancer = function(top, left, timeBetweenSteps) {
+var MakeSpinnyDancer = function(top, left, timeBetweenSteps) {
   MakeDancer.call(this, top, left, timeBetweenSteps);
+  this.$node.addClass('spinny-dancer');
+  this.left = left;
+  window['spinnyCount']++;
+};
+MakeSpinnyDancer.prototype = Object.create(MakeDancer.prototype);
+MakeSpinnyDancer.prototype.constructor = MakeSpinnyDancer;
 
-  // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
-  // so we must keep a copy of the old version of this function
+
+MakeSpinnyDancer.prototype.step = function() {
+
+  MakeDancer.prototype.step.call(this);
+
+  this.$node.toggle();
 };
 
-
-MakeBlinkyDancer.prototype = Object.create(MakeDancer.prototype);
-MakeBlinkyDancer.prototype.constructor = MakeBlinkyDancer;
-
-// MakeBlinkyDancer.prototype.oldStep = MakeDancer.prototype.step;
-// debugger;
-MakeBlinkyDancer.prototype.step = function() {
-  // call the old version of step at the beginning of any call to this new version of ste
-  // this.oldStep(timeBetweenSteps);
-  MakeDancer.prototype.step.call(this);
-  // toggle() is a jQuery method to show/hide the <span> tag.
-  // See http://api.jquery.com/category/effects/ for this and
-  // other effects you can use on a jQuery-wrapped html tag.
-  this.$node.toggle();
+MakeSpinnyDancer.prototype.subClassLineUp = function (spinnyIterated) {
+  // var spaceRatio = 100 / window['blinkyCount'] * blinkyIterated;
+  // spaceRatio = spaceRatio / 100;
+  // var spaceRatio = ((20 * blinkyIterated) + "px");
+  this.setPosition('95%', this.left);
+  // this.$node.css({right: 1000});
 };
