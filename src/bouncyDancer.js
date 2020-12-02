@@ -1,13 +1,17 @@
 var MakeBouncyDancer = function(top, left, timeBetweenSteps) {
   MakeDancer.call(this, top, left, timeBetweenSteps);
   this.$node.addClass('bouncy-dancer');
-  this.top = top;
-  window['bouncyCount']++;
+  // window['bouncyCount']++;
 };
 
 
 MakeBouncyDancer.prototype = Object.create(MakeDancer.prototype);
 MakeBouncyDancer.prototype.constructor = MakeBouncyDancer;
+
+// MakeBouncyDancer.prototype.toggle = function () {
+//   this.$node.toggle({fadeout: 'slow'});
+//   console.log(this);
+// };
 
 MakeBouncyDancer.prototype.step = function() {
   MakeDancer.prototype.step.call(this);

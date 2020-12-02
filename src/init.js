@@ -1,9 +1,11 @@
 $(document).ready(function() {
   window.dancers = [];
+
   $('.lineUpButton').on('click', function(event) {
     var lineUpFunction = window['lineUp'];
     lineUpFunction();
   });
+
   $('.addDancerButton').on('click', function(event) {
 
     var dancerMakerFunctionName = $(this).data('dancer-maker-function-name');
@@ -20,4 +22,3 @@ $(document).ready(function() {
     $('body').append(dancer.$node);
   });
 });
-

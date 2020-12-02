@@ -31,4 +31,19 @@ describe('blinkyDancer', function() {
       expect(blinkyDancer.step.callCount).to.be.equal(2);
     });
   });
+
+  describe('makeDancer', function() {
+    it('should create subclass instances that have the correct constructor', function() {
+      var spinnyDancer = new MakeSpinnyDancer(15, 15, timeBetweenSteps);
+      expect(spinnyDancer.constructor).to.be.equal(MakeSpinnyDancer);
+    });
+  });
+
+  describe('makeDancer', function() {
+    it('should create an instance of the subclass', function() {
+      var spinnyDancer = new MakeSpinnyDancer(15, 15, timeBetweenSteps);
+      var correctInstanceOf = spinnyDancer instanceof MakeSpinnyDancer;
+      expect(correctInstanceOf).to.be.equal(true);
+    });
+  });
 });
